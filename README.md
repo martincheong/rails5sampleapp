@@ -4,6 +4,13 @@ This a sample application created with the help of:
 [*Ruby on Rails Tutorial*: Learn Web Development with Rails(http://www.railstutorial.org)]
 by [Michael Hartl](http://www.michaelhartl.com/).
 
+# Differences from Michael Hartl's Tutorial
+
+## SimpleCov
+I'm Experimenting/Learning with SimpleCov https://github.com/colszowka/simplecov
+to track test coverage of the code.
+Settings is relation to SimpleCov is guided by https://medium.com/@heidar/how-i-test-rails-apps-with-minitest-capybara-and-guard-5e07a6856781#.u2qlnwwl8
+
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
