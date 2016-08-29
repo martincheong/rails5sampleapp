@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get '/home', controller: 'static_pages', action: 'home'
-  get '/help', controller: 'static_pages', action: 'help'
-  get '/about', controller: 'static_pages', action:'about'
-
+  get 'static_pages/home'
+  get 'static_pages/help'
+  get 'static_pages/about'
+  get 'static_pages/contact'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#hello'
+  root 'static_pages#home'
   match '*path', to: redirect('/'), via: :all
 
 end
