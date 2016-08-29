@@ -14,8 +14,8 @@
 #  $ ln -s config/Guardfile .
 #
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
-
-guard :minitest do
+//
+guard :minitest, spring: true, env: {'NO_COVERAGE' => 'true'} do
   watch(%r{^test/(.*)/?(.*)_test\.rb$})
   watch('test/test_helper.rb') { 'test' }
   watch('config/routes.rb')    { integration_tests }

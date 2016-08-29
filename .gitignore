@@ -22,3 +22,6 @@
 
 # Ignore Prevent potential Conflict between Spring Files and Guard
 /spring/*.pid
+
+# Ignore Coverage Files
+coverage
