@@ -15,4 +15,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get contact_path
     assert_select 'title', full_title("Contact")
   end
+
+  test "sign up page" do
+    get signup_path
+    assert_template 'users/new'
+    assert_equal full_title("Sign Up"), "Sign Up | Ruby on Rails Tutorial Sample App"
+  end
 end
