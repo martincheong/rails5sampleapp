@@ -72,8 +72,21 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "password should have a minimum length" do
+  test "user password should have a minimum length" do
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
+
+  test "user password_confirmation needs to be filled" do
+    @user.password = "testpassword"
+    @user.password_confirmation = ""
+    assert_not @user.valid?
+  end
+
+  test "user password_confirmation needs to be matching" do
+    @user.password = "testpassword"
+    @user.password_confirmation = "wrongpassword"
+    assert_not @user.valid?
+  end
+
 end
