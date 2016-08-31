@@ -3,3 +3,8 @@ railstutorial:
   name: Rails Tutorial
   email: example@railstutorial.org
   password_digest: <%= User.digest('mypassword') %>
+
+archer:
+  name: Sterling archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('mypassword') %>
