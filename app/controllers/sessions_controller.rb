@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
   def create
     #session is a hash stored in the params hash
     #email & password are objects in the hash i.e. 2d array somewhat
-    user = User.find_by(email: params[:session][:email].downcase)
-    # user exists and authentication succeeds
-    if user && user.authenticate(params[:session][:password])
-      #adds user_id to sessions hash
-      log_in user
-      remember user
-      redirect_to user
+    @user = User.find_by(email: params[:session][:email].downcase)
+    # @user exists and authentication succeeds
+    if @user && @user.authenticate(params[:session][:password])
+      #adds @user_id to sessions hash
+      log_in @user
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to @user
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
