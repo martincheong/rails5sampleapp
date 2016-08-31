@@ -14,6 +14,12 @@ Settings is relation to SimpleCov is guided by https://medium.com/@heidar/how-i-
 # Chapter 5
 ### Ex1 & 2 (cat image..) are skipped
 
+# Chapter 9
+## 2nd subtle bug
+To observe the subtle bug (logged in on 2 browsers), edit settings in chrome as
+[link follows]
+(http://stackoverflow.com/questions/10617954/chrome-doesnt-delete-session-cookies)
+If not clear the session manually in the inspector
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
