@@ -25,3 +25,6 @@
 
 # Ignore Coverage Files
 coverage
+
+# Ignore Erd generated
+erd.pdf
