@@ -36,6 +36,7 @@ class PasswordResetsController < ApplicationController
          render 'edit'                                     # Case (2)
      end
     end
+
   private
 
     def user_params
