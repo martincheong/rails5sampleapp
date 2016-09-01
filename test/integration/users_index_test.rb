@@ -22,6 +22,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     first_page_of_users = User.paginate(page: 1)
     first_page_of_users.each do |user|
+      assert user.activated?
       assert_select 'a[href=?]', user_path(user), text: user.name
       #unless the user display is admin, *cannot delete self*
       #should have delete text next to them
@@ -38,5 +39,20 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     log_in_as(@non_admin)
     get users_path
     assert_select 'a', text: 'delete', count: 0
+  end
+
+  test "index unactivated user will not be displayed" do
+    get signup_path
+    assert_difference 'User.count', 1 do
+      post users_path, params: {user:{name:"Example User",
+                                      email: "user@example.com",
+                                      password:             "password",
+                                      password_confirmation:"password"}}
+    end
+    user = assigns(:user)
+    get user_path(user)
+    #unactivated user should be redirect to root
+    follow_redirect!
+    assert_template 'static_pages/home'
   end
 end
