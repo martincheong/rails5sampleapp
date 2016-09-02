@@ -28,3 +28,6 @@ coverage
 
 # Ignore Erd generated
 erd.pdf
+
+#Ignore uploaded test images
+/public/upload

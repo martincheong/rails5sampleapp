@@ -7,7 +7,7 @@
       password_resetS_path is a POST route connecting to pw_reset-create
      %>
     <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages' , object: f.object%>
 
       <%# keep email field as a hidden tag to preserve it when submitting to
       reset %>
