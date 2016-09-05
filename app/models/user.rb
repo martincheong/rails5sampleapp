@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  has_many :active_relationships, class_name: "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent: :destroy
+
+  has_many :passive_relationsihps, class_name: "Relationship",
+                                  foreign_key: "followed_id",
+                                  dependent: :destroy
+
+  has_many :followers, through: :passive_relationsihps                                
+  has_many :following, through: :active_relationships, source: :followed
   has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save { email.downcase! }
@@ -70,6 +80,18 @@ class User < ApplicationRecord
   def feed
     Micropost.where("user_id = ?",id)
   end
+
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+   active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+   def following?(other_user)
+     following.include?(other_user)
+   end
   private
 
     def create_activation_digest
